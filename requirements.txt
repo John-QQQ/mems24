@@ -2,3 +2,4 @@ streamlit
 streamlit-folium
 h3
 shapely
+python-docx
