@@ -389,7 +389,7 @@ if st.button("필터링된 데이터를 MS Word로 저장"):
                 doc.add_paragraph("이미지를 로드할 수 없습니다.")
 
         # 페이지 나누기
-                doc.add_page_break()  # 새 단말번호 작성 시 새 페이지로 이동
+        doc.add_page_break()  # 새 단말번호 작성 시 새 페이지로 이동
 
     # Word 파일을 BytesIO 버퍼에 저장
     buffer = BytesIO()
