@@ -76,7 +76,6 @@ if 'show_axis_correction_selection' not in st.session_state:
 if st.button("축보정 선택하기"):
     st.session_state['show_axis_correction_selection'] = not st.session_state['show_axis_correction_selection']
 
-
 # 필터링 조건 초기화
 filtered_data = data.copy()
 
