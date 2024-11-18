@@ -260,7 +260,8 @@ if st.session_state['show_map']:
 
 def download_image_from_dropbox(url):
     # Dropbox 미리보기 링크를 다운로드 링크로 변경
-    download_url = url.replace("?dl=0", "?dl=1")
+    # Replace dl=0 with raw=1 to get image only
+    download_url = url.replace("dl=0", "raw=1")
     response = requests.get(download_url)
     if response.status_code == 200:
         return BytesIO(response.content)  # 이미지 데이터를 BytesIO로 반환
@@ -368,16 +369,17 @@ if st.button("필터링된 데이터를 MS Word로 저장"):
 
         # 10행: 추가 이미지 링크 1, 2
         cell = table.cell(9, 0).merge(table.cell(9, 2))
-        cell.text = str(row.get("현장 설치 사진", "#Image_link1"))
+        cell.text = str(row.get("Image_Link_1", "#Image_link1"))
         center_align(cell)
 
         cell = table.cell(9, 3).merge(table.cell(9, 5))
-        cell.text = str(row.get("현장 설치 사진", "#Image_link2"))
+        cell.text = str(row.get("Image_Link_2", "#Image_link2"))
         center_align(cell)
 
         # 이미지 링크가 있는 경우 이미지 삽입
-        image_url = row.get("현장 설치 사진", "")
-        if image_url:
+        image_url = row.get("Image_Link_1", None)
+        # replace nan with None
+        if image_url is not None and not pd.isna(image_url):
             image_data = download_image_from_dropbox(image_url)
             if image_data:
                 doc.add_paragraph("현장 설치 사진:")
