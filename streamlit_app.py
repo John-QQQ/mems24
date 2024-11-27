@@ -14,7 +14,7 @@ from docx.shared import Inches
 
 
 st.title("MEMS 메타데이터 관리")
-st.write("SKT MEMS 시각화 및 필터, 메타데이터 열람기능")
+st.write("SKT MEMS 시각화 및 필터, 메타데이터 열람기능 test ")
 
 latest_status_file = 'Sensor_data_1024.csv'
 
